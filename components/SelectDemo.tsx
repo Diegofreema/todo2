@@ -9,26 +9,13 @@ export default function SelectDemo() {
   return (
     <Fieldset>
       <Label htmlFor="food">Select Demo</Label>
-      <Select
-        id="food"
-        value={val}
-        onValueChange={setVal}
-      >
-        <Select.Trigger
-          id="food"
-          iconAfter={ChevronDown}
-        >
+      <Select id="food" value={val} onValueChange={setVal}>
+        <Select.Trigger id="food" iconAfter={ChevronDown}>
           <Select.Value placeholder="Something" />
         </Select.Trigger>
 
-        <Adapt
-          when="sm"
-          platform="touch"
-        >
-          <Sheet
-            modal
-            dismissOnSnapToBottom
-          >
+        <Adapt when="sm" platform="touch">
+          <Sheet modal dismissOnSnapToBottom>
             <Sheet.Frame>
               <Sheet.ScrollView>
                 <Adapt.Contents />
@@ -126,5 +113,5 @@ const items = [
   { name: "Orange" },
   { name: "Grape" },
   { name: "Jackfruit" },
-  { name: "Durian" }
+  { name: "Durian" },
 ];

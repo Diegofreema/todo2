@@ -1,12 +1,12 @@
 module.exports = {
   env: {
-    node: true
+    node: true,
   },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   parser: "@typescript-eslint/parser",
   root: true,
@@ -36,9 +36,9 @@ module.exports = {
           // Other relative imports. Put same-folder imports and `.` last.
           ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
           // Style imports.
-          ["^.+\\.?(css)$"]
-        ]
-      }
-    ]
-  }
+          ["^.+\\.?(css)$"],
+        ],
+      },
+    ],
+  },
 };

@@ -8,7 +8,7 @@ import {
   Label,
   Sheet,
   Unspaced,
-  YStack
+  YStack,
 } from "tamagui";
 
 import SelectDemo from "./SelectDemo";
@@ -20,19 +20,9 @@ export default function DialogDemo() {
         <Button>Edit Profile</Button>
       </Dialog.Trigger>
 
-      <Adapt
-        when="sm"
-        platform="touch"
-      >
-        <Sheet
-          zIndex={200000}
-          modal
-          dismissOnSnapToBottom
-        >
-          <Sheet.Frame
-            padding="$4"
-            space
-          >
+      <Adapt when="sm" platform="touch">
+        <Sheet zIndex={200000} modal dismissOnSnapToBottom>
+          <Sheet.Frame padding="$4" space>
             <Adapt.Contents />
           </Sheet.Frame>
           <Sheet.Overlay />
@@ -56,9 +46,9 @@ export default function DialogDemo() {
             "quick",
             {
               opacity: {
-                overshootClamping: true
-              }
-            }
+                overshootClamping: true,
+              },
+            },
           ]}
           enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
           exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
@@ -70,26 +60,14 @@ export default function DialogDemo() {
           </Dialog.Description>
           <Fieldset>
             <Label htmlFor="name">Name</Label>
-            <Input
-              id="name"
-              defaultValue="Nate Wienert"
-            />
+            <Input id="name" defaultValue="Nate Wienert" />
           </Fieldset>
 
           <SelectDemo />
 
-          <YStack
-            alignItems="flex-end"
-            marginTop="$2"
-          >
-            <Dialog.Close
-              displayWhenAdapted
-              asChild
-            >
-              <Button
-                theme="green_Button"
-                aria-label="Close"
-              >
+          <YStack alignItems="flex-end" marginTop="$2">
+            <Dialog.Close displayWhenAdapted asChild>
+              <Button theme="green_Button" aria-label="Close">
                 Save changes
               </Button>
             </Dialog.Close>

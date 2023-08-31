@@ -1,87 +1,58 @@
-import { Github, Twitter } from "@tamagui/lucide-icons";
-import { Link, useRouter } from "expo-router";
-import {
-  Button,
-  H1,
-  ListItem,
-  Paragraph,
-  Separator,
-  YGroup,
-  YStack
-} from "tamagui";
+import { StyleSheet } from "react-native";
+import { Image, Stack, YStack } from "tamagui";
+import { Text } from "tamagui";
 
-import { MyStack } from "../components/MyStack";
+import Heading from "../components/Heading";
+import MyButton from "../components/MyButton";
+import { blue, gray } from "../utils/colors";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
-    <MyStack>
-      <YStack
-        space="$4"
-        maxWidth={600}
-      >
-        <H1 textAlign="center">Welcome to Tamagui.</H1>
-        <Paragraph textAlign="center">
-          Here&apos;s a basic starter to show navigating from one screen to
-          another.
-        </Paragraph>
-      </YStack>
+    <Stack flex={1}>
+      <Image
+        source={require("../assets/background.png")}
+        style={styles.imageCon}
+      />
+      <Stack
+        marginTop="$-11"
+        backgroundColor="white"
+        height={"$7"}
+        borderTopLeftRadius={30}
+        borderTopRightRadius={30}
+      />
+      <Stack backgroundColor="white" height={"40%"}>
+        <Heading textAlign="center" fontWeight="700" fontSize={22}>
+          Best task management app
+        </Heading>
+        <Stack marginHorizontal={"$10"} marginTop={10} marginBottom={20}>
+          <Text textAlign="center" color={gray[500]} fontSize={15}>
+            Get organized by sorting out all your tasks and boost your
+            productivity.
+          </Text>
+        </Stack>
+        <YStack space="$4.5" marginHorizontal={"$10"}>
+          <MyButton href="/welcome" text={"Login"} backgroundColor={blue[10]} />
 
-      <Button onPress={() => router.push("/users/testuser")}>
-        Go to user page
-      </Button>
-
-      <YStack space="$5">
-        <YGroup
-          bordered
-          separator={<Separator />}
-          theme="green"
-        >
-          <YGroup.Item>
-            <Link
-              asChild
-              href="https://twitter.com/natebirdman"
-              target="_blank"
-            >
-              <ListItem
-                hoverTheme
-                title="Nate"
-                pressTheme
-                icon={Twitter}
-              />
-            </Link>
-          </YGroup.Item>
-          <YGroup.Item>
-            <Link
-              asChild
-              href="https://github.com/tamagui/tamagui"
-              target="_blank"
-            >
-              <ListItem
-                hoverTheme
-                pressTheme
-                title="Tamagui"
-                icon={Github}
-              />
-            </Link>
-          </YGroup.Item>
-          <YGroup.Item>
-            <Link
-              asChild
-              href="https://github.com/ivopr/tamagui-expo"
-              target="_blank"
-            >
-              <ListItem
-                hoverTheme
-                pressTheme
-                title="This Template"
-                icon={Github}
-              />
-            </Link>
-          </YGroup.Item>
-        </YGroup>
-      </YStack>
-    </MyStack>
+          <MyButton
+            href="/register"
+            text="Get Started"
+            backgroundColor={blue[20]}
+          />
+        </YStack>
+      </Stack>
+    </Stack>
   );
 }
+
+const styles = StyleSheet.create({
+  imageCon: {
+    width: "100%",
+    height: "70%",
+    resizeMode: "cover",
+  },
+  abs: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "black",
+  },
+});
