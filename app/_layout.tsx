@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import Toast from "react-native-toast-message";
 import {
@@ -7,7 +7,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack, useRootNavigationState } from "expo-router";
 import { useRouter, useSegments } from "expo-router";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
@@ -17,11 +17,16 @@ import config from "../tamagui.config";
 
 SplashScreen.preventAutoHideAsync();
 const InitialLayout = () => {
+  const navigationState = useRootNavigationState();
+
   const { session, initialized } = useAuth();
   const segments = useSegments();
   const router = useRouter();
 
   useEffect(() => {
+    if (!navigationState?.key) {
+      return;
+    }
     if (!initialized) return;
 
     // Check if the path/url is in the (auth) group
